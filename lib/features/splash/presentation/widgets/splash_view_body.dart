@@ -50,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void _initSlidingAnimation() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: splashAnimationDurationWithMS),
+      duration: const Duration(milliseconds: kSplashAnimationDurationWithMS),
     );
     _slidingAnimation = Tween<Offset>(
       begin: const Offset(0, 2),
@@ -66,7 +66,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         Get.offAll(
           const HomeView(),
           transition: Transition.fade,
-          duration: transitionDuration,
+          duration: kTransitionDuration,
         );
       },
     );

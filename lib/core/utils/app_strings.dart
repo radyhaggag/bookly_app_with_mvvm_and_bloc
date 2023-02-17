@@ -1,5 +1,3 @@
-class AppStrings {
-  AppStrings._();
-
+abstract class AppStrings {
   static const String splashMessage = 'Read Free Books';
 }

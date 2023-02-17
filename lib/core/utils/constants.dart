@@ -1,2 +1,3 @@
-const int splashAnimationDurationWithMS = 1000;
-const Duration transitionDuration = Duration(milliseconds: 250);
+const int kSplashAnimationDurationWithMS = 1000;
+const Duration kTransitionDuration = Duration(milliseconds: 250);
+const String kGTSectra = 'GT Sectra';
