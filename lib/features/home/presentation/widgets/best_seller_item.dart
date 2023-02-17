@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:bookly_app/core/utils/extensions.dart';
+import 'package:bookly_app/core/utils/styles.dart';
+
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/constants.dart';
+import 'book_rating.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
@@ -22,6 +27,43 @@ class BestSellerItem extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
+            ),
+          ),
+          const SizedBox(width: 30),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: context.screenWidth * .5,
+                  child: Text(
+                    'Harry potter and the Goblet of Fire',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Styles.textStyle20.copyWith(
+                      fontFamily: kGTSectraFont,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                const Text(
+                  "J.K Rowling",
+                  style: Styles.textStyle14,
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "19.99 £",
+                      style: Styles.textStyle20.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const BookRating(),
+                  ],
+                ),
+              ],
             ),
           )
         ],

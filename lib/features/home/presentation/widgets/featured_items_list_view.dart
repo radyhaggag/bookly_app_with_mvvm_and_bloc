@@ -11,10 +11,10 @@ class FeaturedItemsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: context.screenHeight * 0.3,
-      child: ListView.separated(
-        itemBuilder: (context, index) => const FeaturedItem(),
-        separatorBuilder: (context, index) => const SizedBox(
-          width: 12,
+      child: ListView.builder(
+        itemBuilder: (context, index) => const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: FeaturedItem(),
         ),
         itemCount: 10,
         scrollDirection: Axis.horizontal,
