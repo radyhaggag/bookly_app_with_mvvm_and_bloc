@@ -1,6 +1,9 @@
-import 'package:bookly_app/core/utils/constants.dart';
-import 'package:bookly_app/features/home/presentation/widgets/book_details_custom_app_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/extensions.dart';
+import 'book_details_custom_app_bar.dart';
+import 'custom_book_item.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
@@ -13,8 +16,14 @@ class BookDetailsViewBody extends StatelessWidget {
         vertical: 15,
       ),
       child: Column(
-        children: const [
-          BookDetailsCustomAppBar(),
+        children: [
+          const BookDetailsCustomAppBar(),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.screenWidth * .17,
+            ),
+            child: const CustomBookItem(isClickable: false),
+          ),
         ],
       ),
     );
