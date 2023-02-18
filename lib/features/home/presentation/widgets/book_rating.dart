@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -24,7 +25,7 @@ class BookRating extends StatelessWidget {
         Text(
           '(2468)',
           style: Styles.textStyle14.copyWith(
-            color: const Color(0xff707070),
+            color: AppColors.greyColor,
           ),
         ),
       ],

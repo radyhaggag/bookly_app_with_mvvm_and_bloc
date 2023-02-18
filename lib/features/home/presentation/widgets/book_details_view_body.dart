@@ -1,3 +1,5 @@
+import 'package:bookly_app/core/utils/app_colors.dart';
+import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
@@ -20,9 +22,22 @@ class BookDetailsViewBody extends StatelessWidget {
           const BookDetailsCustomAppBar(),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: context.screenWidth * .17,
+              horizontal: context.screenWidth * .2,
             ),
             child: const CustomBookItem(isClickable: false),
+          ),
+          const SizedBox(height: 43),
+          const Text(
+            'The Jungle Book',
+            style: Styles.textStyle30,
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Rudyard Kipling',
+            style: Styles.textStyle18.copyWith(
+              color: AppColors.greyColor.withOpacity(.7),
+              fontStyle: FontStyle.italic,
+            ),
           ),
         ],
       ),

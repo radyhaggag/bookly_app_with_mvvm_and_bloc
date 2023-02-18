@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/core/utils/styles.dart';
-
 import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/styles.dart';
 import 'best_seller_items_list_view.dart';
 import 'featured_items_list_view.dart';
 import 'home_view_custom_app_bar.dart';
