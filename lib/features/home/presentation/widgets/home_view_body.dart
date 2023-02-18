@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
             children: const [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: kHomeHorizontalPadding,
+                  horizontal: kMainHorizontalPadding,
                 ),
                 child: HomeViewCustomAppBar(),
               ),
@@ -29,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
               SizedBox(height: 50),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: kHomeHorizontalPadding,
+                  horizontal: kMainHorizontalPadding,
                 ),
                 child: Text('Best Seller', style: Styles.textStyle18),
               ),
@@ -40,7 +40,7 @@ class HomeViewBody extends StatelessWidget {
         const SliverFillRemaining(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: kHomeHorizontalPadding,
+              horizontal: kMainHorizontalPadding,
             ),
             child: BestSellerItemsListView(),
           ),
