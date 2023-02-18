@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:bookly_app/core/config/app_router.dart';
 import 'package:bookly_app/core/utils/app_assets.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 
 import '../../../../core/utils/constants.dart';
 import 'sliding_text.dart';
@@ -20,18 +20,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late Animation<Offset> _slidingAnimation;
 
   @override
+  void dispose() {
+    _animationController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
 
     _initSlidingAnimation();
     _navigateToHome();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-
-    super.dispose();
   }
 
   @override
@@ -63,10 +63,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        Get.offAll(
-          const HomeView(),
-          transition: Transition.fade,
-          duration: kTransitionDuration,
+        GoRouter.of(context).pushReplacement(
+          AppRouter.homeView,
         );
       },
     );

@@ -37,14 +37,12 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const SliverToBoxAdapter(
-          child: Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: kHomeHorizontalPadding,
-              ),
-              child: BestSellerItemsListView(),
+        const SliverFillRemaining(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: kHomeHorizontalPadding,
             ),
+            child: BestSellerItemsListView(),
           ),
         ),
       ],
