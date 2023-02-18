@@ -8,8 +8,8 @@ import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+class BookItem extends StatelessWidget {
+  const BookItem({super.key});
 
   @override
   Widget build(BuildContext context) {
