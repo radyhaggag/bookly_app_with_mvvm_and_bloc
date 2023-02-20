@@ -7,22 +7,17 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
-    on<SearchEvent>((event, emit) {
-      if (event is ChangeFilterSelectionVisibility) {
-        _changeFilterSelectionVisibility(emit);
-      }
-      if (event is ChangeSearchFilterOption) {
-        _changeSearchFilterOption(event, emit);
-      }
-      if (event is ChangeSearchText) {
-        _changeSearchText(event, emit);
-      }
-    });
+    on<ChangeFilterSelectionVisibility>(_changeFilterSelectionVisibility);
+    on<ChangeSearchFilterOption>(_changeSearchFilterOption);
+    on<ChangeSearchText>(_changeSearchText);
   }
 
   bool _isFilterSelectionVisible = false;
 
-  void _changeFilterSelectionVisibility(Emitter<SearchState> emit) {
+  void _changeFilterSelectionVisibility(
+    ChangeFilterSelectionVisibility event,
+    Emitter<SearchState> emit,
+  ) {
     _isFilterSelectionVisible = !_isFilterSelectionVisible;
     emit(FilterSelectionVisibilityChanged(_isFilterSelectionVisible));
   }
