@@ -1,4 +1,4 @@
-import '../../core/utils/app_enums.dart';
+import 'app_enums.dart';
 
 class SearchParams {
   SearchParams({

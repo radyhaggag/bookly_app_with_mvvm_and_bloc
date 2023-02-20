@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/search/search_params.dart';
+import 'package:bookly_app/core/utils/params.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
