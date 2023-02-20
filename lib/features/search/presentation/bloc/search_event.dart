@@ -26,3 +26,5 @@ class ChangeSearchText extends SearchEvent {
   @override
   List<Object> get props => [searchText];
 }
+
+class LoadSearchResult extends SearchEvent {}

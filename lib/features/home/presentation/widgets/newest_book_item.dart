@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../data/models/book_model/book_model.dart';
 import '../../../../core/config/app_router.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
-class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+class NewestBookItem extends StatelessWidget {
+  const NewestBookItem({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).push(AppRouter.bookDetailsView),
+      onTap: () => GoRouter.of(context).push(
+        AppRouter.bookDetailsView,
+        extra: book,
+      ),
       child: SizedBox(
         height: 125,
         child: Row(
@@ -24,9 +29,8 @@ class BookItem extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                    image: AssetImage(AppAssets.testImage),
+                  image: DecorationImage(
+                    image: NetworkImage(book.volumeInfo.imageLinks.thumbnail),
                     fit: BoxFit.contain,
                   ),
                 ),

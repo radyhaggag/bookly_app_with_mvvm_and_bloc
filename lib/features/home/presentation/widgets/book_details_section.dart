@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bookly_app/core/utils/extensions.dart';
@@ -6,10 +7,12 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/styles.dart';
 import 'book_details_actions.dart';
 import 'book_rating.dart';
-import 'custom_book_item.dart';
+import 'featured_book_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,10 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: context.screenWidth * .2,
           ),
-          child: const CustomBookItem(isClickable: false),
+          child: FeaturedBookItem(
+            isClickable: false,
+            book: book,
+          ),
         ),
         const SizedBox(height: 43),
         const Text(

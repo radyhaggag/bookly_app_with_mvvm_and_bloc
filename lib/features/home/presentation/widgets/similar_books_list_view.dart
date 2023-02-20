@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:bookly_app/core/utils/extensions.dart';
 
-import 'custom_book_item.dart';
-
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
 
@@ -14,7 +12,7 @@ class SimilarBooksListView extends StatelessWidget {
       child: ListView.builder(
         itemBuilder: (context, index) => const Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
-          child: CustomBookItem(isClickable: true),
+          // child: FeaturedBookItem(isClickable: true), // TODO : FETCH SIMILIR BOOKS
         ),
         itemCount: 10,
         scrollDirection: Axis.horizontal,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bookly_app/core/utils/params.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -10,6 +12,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<ChangeFilterSelectionVisibility>(_changeFilterSelectionVisibility);
     on<ChangeSearchFilterOption>(_changeSearchFilterOption);
     on<ChangeSearchText>(_changeSearchText);
+    on<LoadSearchResult>(_loadSearchResult);
   }
 
   bool _isFilterSelectionVisible = false;
@@ -40,4 +43,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) {
     searchParams = searchParams.copyWith(searchText: event.searchText);
   }
+
+  FutureOr<void> _loadSearchResult(
+    LoadSearchResult event,
+    Emitter<SearchState> emit,
+  ) async {}
 }

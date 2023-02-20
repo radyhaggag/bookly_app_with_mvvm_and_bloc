@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
+import '../../data/models/book_model/book_model.dart';
 import 'book_details_custom_app_bar.dart';
 import 'book_details_section.dart';
 import 'book_details_similar_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  const BookDetailsViewBody({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +23,14 @@ class BookDetailsViewBody extends StatelessWidget {
               vertical: 15,
             ),
             child: Column(
-              children: const [
-                BookDetailsCustomAppBar(),
-                BookDetailsSection(),
-                Expanded(
+              children: [
+                const BookDetailsCustomAppBar(),
+                BookDetailsSection(book: book),
+                const Expanded(
                   child: SizedBox(height: 50),
                 ),
-                BookDetailsSimilarSection(),
-                SizedBox(height: 40),
+                const BookDetailsSimilarSection(),
+                const SizedBox(height: 40),
               ],
             ),
           ),
