@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/styles.dart';
 import 'best_seller_items_list_view.dart';
@@ -16,7 +17,7 @@ class BestSellerSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          Text('Best Seller', style: Styles.textStyle18),
+          Text(AppStrings.newestBooks, style: Styles.textStyle18),
           SizedBox(height: 20),
           Expanded(
             child: BestSellerItemsListView(),
