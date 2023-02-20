@@ -6,7 +6,7 @@ import 'package:bookly_app/core/utils/extensions.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../bloc/search_bloc.dart';
-import '../search_params.dart';
+import '../../search_params.dart';
 
 class FilterOptionChip extends StatelessWidget {
   const FilterOptionChip({super.key, required this.filterOption});
