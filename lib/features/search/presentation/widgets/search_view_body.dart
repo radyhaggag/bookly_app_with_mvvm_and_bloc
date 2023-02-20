@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
-import 'custom_search_text_field.dart';
 import 'search_result_section.dart';
+import 'search_text_field_section.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -16,7 +16,7 @@ class SearchViewBody extends StatelessWidget {
       ),
       child: Column(
         children: const [
-          CustomSearchTextField(),
+          SearchTextFieldSection(),
           SizedBox(height: 15),
           Expanded(child: SearchResultSection()),
         ],

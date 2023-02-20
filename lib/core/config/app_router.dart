@@ -1,7 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/presentation/views/book_details_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/search/presentation/bloc/search_bloc.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -27,7 +29,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: searchView,
-        builder: (context, state) => const SearchView(),
+        builder: (context, state) => BlocProvider<SearchBloc>(
+          create: (context) => SearchBloc(),
+          child: const SearchView(),
+        ),
       ),
     ],
   );

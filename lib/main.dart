@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:bookly_app/core/config/app_router.dart';
-import 'package:bookly_app/core/utils/app_colors.dart';
+import 'bloc_observer.dart';
+import 'core/config/app_router.dart';
+import 'core/utils/app_colors.dart';
 
 void main() {
+  Bloc.observer = MyBlocObserver();
   runApp(const BooklyApp());
 }
 
