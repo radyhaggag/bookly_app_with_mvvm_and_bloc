@@ -8,3 +8,31 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitial extends HomeState {}
+
+class FeaturedBooksLoading extends HomeState {}
+
+class FeaturedBooksLoadingSuccess extends HomeState {
+  const FeaturedBooksLoadingSuccess(this.books);
+
+  final List<BookModel> books;
+}
+
+class FeaturedBooksLoadingFailed extends HomeState {
+  const FeaturedBooksLoadingFailed(this.message);
+
+  final String message;
+}
+
+class NewestBooksLoading extends HomeState {}
+
+class NewestBooksLoadingSuccess extends HomeState {
+  const NewestBooksLoadingSuccess(this.books);
+
+  final List<BookModel> books;
+}
+
+class NewestBooksLoadingFailed extends HomeState {
+  const NewestBooksLoadingFailed(this.message);
+
+  final String message;
+}

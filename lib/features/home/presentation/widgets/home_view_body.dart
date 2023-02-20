@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
-import 'best_seller_section.dart';
+import 'newest_section.dart';
 import 'featured_items_list_view.dart';
 import 'home_view_custom_app_bar.dart';
 
@@ -29,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         const SliverFillRemaining(
-          child: BestSellerSection(),
+          child: NewestSection(),
         ),
       ],
     );
