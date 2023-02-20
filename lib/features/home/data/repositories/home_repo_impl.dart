@@ -16,7 +16,7 @@ class HomeRepoImpl implements HomeRepo {
       final books = await homeRemoteDatasource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
-      return left(ServerFailure('No connection'));
+      return left(ErrorHandler.handle(e).failure);
     }
   }
 
@@ -26,7 +26,7 @@ class HomeRepoImpl implements HomeRepo {
       final books = await homeRemoteDatasource.fetchNewestBooks();
       return right(books);
     } catch (e) {
-      return left(ServerFailure('No connection'));
+      return left(ErrorHandler.handle(e).failure);
     }
   }
 }
