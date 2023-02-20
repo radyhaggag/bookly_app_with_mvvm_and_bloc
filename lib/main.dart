@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,6 +9,7 @@ import 'core/utils/app_colors.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
+  initServiceLocator();
   runApp(const BooklyApp());
 }
 
