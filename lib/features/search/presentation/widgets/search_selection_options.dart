@@ -13,7 +13,10 @@ class SearchSelectionOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(
+        left: 45,
+        top: 10,
+      ),
       child: Container(
         width: context.screenWidth,
         padding: const EdgeInsets.all(10),

@@ -10,28 +10,21 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      physics: const ClampingScrollPhysics(),
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: kMainHorizontalPadding,
-                ),
-                child: HomeViewCustomAppBar(),
+    return SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: kMainHorizontalPadding,
               ),
-              FeaturedItemsListView(),
-              SizedBox(height: 50),
-            ],
-          ),
-        ),
-        const SliverFillRemaining(
-          child: NewestSection(),
-        ),
-      ],
-    );
+              child: HomeViewCustomAppBar(),
+            ),
+            FeaturedItemsListView(),
+            SizedBox(height: 50),
+            NewestSection(),
+          ],
+        ));
   }
 }

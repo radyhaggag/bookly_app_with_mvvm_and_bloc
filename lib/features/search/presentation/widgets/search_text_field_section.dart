@@ -14,6 +14,7 @@ class SearchTextFieldSection extends StatelessWidget {
       children: [
         Row(
           children: [
+            const CloseButton(),
             const Expanded(
               child: CustomSearchTextField(),
             ),

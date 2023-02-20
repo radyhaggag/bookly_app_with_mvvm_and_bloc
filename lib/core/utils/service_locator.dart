@@ -17,8 +17,10 @@ void initServiceLocator() {
 }
 
 void _initCore() {
+  sl.registerLazySingleton<DioApiService>(() => DioApiService(Dio()));
+
   sl.registerLazySingleton<ApiService>(
-    () => DioApiService(Dio()),
+    () => sl<DioApiService>(),
   );
 }
 

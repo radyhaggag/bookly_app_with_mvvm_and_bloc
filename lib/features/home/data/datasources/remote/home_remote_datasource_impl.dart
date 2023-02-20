@@ -12,14 +12,14 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
   Future<List<BookModel>> fetchFeaturedBooks() async {
     try {
       final data = await apiService.get(
-        endpoint: 'volumes?filter=free-ebooks&q=programming',
+        endpoint: 'volumes?q=programming',
       );
       List<BookModel> books = [];
       books = List<BookModel>.from(
         data['items'].map((book) => BookModel.fromJson(book)),
       );
       return books;
-    } catch (_) {
+    } catch (e) {
       rethrow;
     }
   }
@@ -28,14 +28,14 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
   Future<List<BookModel>> fetchNewestBooks() async {
     try {
       final data = await apiService.get(
-        endpoint: 'volumes?filter=free-ebooks&q=programming&orderBy=newest',
+        endpoint: 'volumes?q=programming&orderBy=newest',
       );
       List<BookModel> books = [];
       books = List<BookModel>.from(
         data['items'].map((book) => BookModel.fromJson(book)),
       );
       return books;
-    } catch (_) {
+    } catch (e) {
       rethrow;
     }
   }

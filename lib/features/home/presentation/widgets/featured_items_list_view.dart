@@ -1,5 +1,5 @@
-import 'package:bookly_app/core/widgets/center_loading_indicator.dart';
-import 'package:bookly_app/core/widgets/custom_error_widget.dart';
+import '../../../../core/widgets/custom_error_widget.dart';
+import '../../../../core/widgets/custom_shimmer.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bookly_app/core/utils/extensions.dart';
@@ -16,21 +16,43 @@ class FeaturedItemsListView extends StatelessWidget {
     return SizedBox(
       height: context.screenHeight * 0.3,
       child: BlocBuilder<HomeBloc, HomeState>(
+        buildWhen: (previous, current) {
+          if (current is FeaturedBooksLoading ||
+              current is FeaturedBooksLoadingSuccess ||
+              current is FeaturedBooksLoadingFailed) {
+            return true;
+          }
+          return false;
+        },
         builder: (context, state) {
           if (state is FeaturedBooksLoadingSuccess) {
             return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: FeaturedBookItem(
-                    isClickable: true, book: state.books[index]),
+                  isClickable: true,
+                  book: state.books[index],
+                ),
               ),
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
             );
           } else if (state is FeaturedBooksLoadingFailed) {
             return CustomErrorWidget(message: state.message);
           } else {
-            return const CenterLoadingIndicator();
+            return ListView.builder(
+              itemBuilder: (context, index) => const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: AspectRatio(
+                  aspectRatio: 2.6 / 4,
+                  child: CustomShimmer(radius: 10),
+                ),
+              ),
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+            );
           }
         },
       ),

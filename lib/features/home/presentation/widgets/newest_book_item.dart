@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/presentation/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -6,6 +7,7 @@ import '../../../../core/config/app_router.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
+import '../../data/models/book_model/sale_info.dart';
 import 'book_rating.dart';
 
 class NewestBookItem extends StatelessWidget {
@@ -25,15 +27,9 @@ class NewestBookItem extends StatelessWidget {
         child: Row(
           children: [
             AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                    image: NetworkImage(book.volumeInfo.imageLinks.thumbnail),
-                    fit: BoxFit.contain,
-                  ),
-                ),
+              aspectRatio: 2.6 / 4,
+              child: CustomBookImage(
+                imageUrl: book.volumeInfo.imageLinks.thumbnail,
               ),
             ),
             const SizedBox(width: 30),
@@ -44,7 +40,7 @@ class NewestBookItem extends StatelessWidget {
                   SizedBox(
                     width: context.screenWidth * .5,
                     child: Text(
-                      'Harry potter and the Goblet of Fire',
+                      book.volumeInfo.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -53,21 +49,26 @@ class NewestBookItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  const Text(
-                    "J.K Rowling",
-                    style: Styles.textStyle14,
-                  ),
-                  const SizedBox(height: 3),
+                  if (book.volumeInfo.authors != null)
+                    Text(
+                      book.volumeInfo.authors!.join(', '),
+                      style: Styles.textStyle14,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  const SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "19.99 £",
-                        style: Styles.textStyle20.copyWith(
-                          fontWeight: FontWeight.w700,
+                      if (book.saleInfo != null)
+                        Text(
+                          _getPrice(book.saleInfo!),
+                          style: Styles.textStyle20.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const BookRating(),
+                      if (book.volumeInfo.averageRating != null)
+                        BookRating(rating: book.volumeInfo.averageRating!),
                     ],
                   ),
                 ],
@@ -77,5 +78,17 @@ class NewestBookItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getPrice(SaleInfo saleInfo) {
+    if (saleInfo.saleability == 'FOR_SALE') {
+      return '${saleInfo.listPrice!.amount} £';
+    } else if (saleInfo.saleability == 'FREE') {
+      return saleInfo.saleability!;
+    } else if (saleInfo.saleability == 'NOT_FOR_SALE') {
+      return 'Not for sale';
+    } else {
+      return saleInfo.saleability.toString();
+    }
   }
 }

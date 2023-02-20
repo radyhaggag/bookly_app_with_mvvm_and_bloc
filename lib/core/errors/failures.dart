@@ -53,6 +53,8 @@ class ErrorHandler {
   ErrorHandler.handle(dynamic error) {
     if (error is DioError) {
       failure = ServerFailure.fromDioError(error);
+    } else {
+      failure = ServerFailure(error.toString());
     }
   }
 

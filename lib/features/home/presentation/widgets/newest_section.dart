@@ -19,9 +19,7 @@ class NewestSection extends StatelessWidget {
         children: const [
           Text(AppStrings.newestBooks, style: Styles.textStyle18),
           SizedBox(height: 20),
-          Expanded(
-            child: NewestItemsListView(),
-          ),
+          NewestItemsListView(),
         ],
       ),
     );

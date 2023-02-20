@@ -1,9 +1,9 @@
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import '../../data/models/book_model/book_model.dart';
+import 'custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/config/app_router.dart';
-import '../../../../core/utils/app_assets.dart';
 
 class FeaturedBookItem extends StatelessWidget {
   const FeaturedBookItem({
@@ -26,14 +26,8 @@ class FeaturedBookItem extends StatelessWidget {
           : null,
       child: AspectRatio(
         aspectRatio: 2.6 / 4,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            image: const DecorationImage(
-              image: AssetImage(AppAssets.testImage),
-              fit: BoxFit.contain,
-            ),
-          ),
+        child: CustomBookImage(
+          imageUrl: book.volumeInfo.imageLinks.thumbnail,
         ),
       ),
     );
