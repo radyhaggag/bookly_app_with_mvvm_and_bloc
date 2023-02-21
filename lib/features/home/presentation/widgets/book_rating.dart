@@ -1,8 +1,9 @@
-import 'package:bookly_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:bookly_app/core/utils/styles.dart';
+
+import '../../../../core/utils/app_colors.dart';
 
 class BookRating extends StatelessWidget {
   const BookRating({
@@ -12,10 +13,9 @@ class BookRating extends StatelessWidget {
     required this.count,
   });
 
-  final double rating;
   final int count;
-
   final MainAxisAlignment mainAxisAlignment;
+  final num rating;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class BookRating extends StatelessWidget {
       children: [
         const Icon(
           FontAwesomeIcons.solidStar,
-          color: Color(0xffFFDD4F),
+          color: AppColors.yellowColor,
           size: 16,
         ),
         const SizedBox(width: 6.5),

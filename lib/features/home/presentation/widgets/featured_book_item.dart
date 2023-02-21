@@ -27,7 +27,7 @@ class FeaturedBookItem extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 2.6 / 4,
         child: CustomBookImage(
-          imageUrl: book.volumeInfo.imageLinks.thumbnail,
+          imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
         ),
       ),
     );
