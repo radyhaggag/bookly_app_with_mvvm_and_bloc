@@ -53,26 +53,33 @@ class BookDetailsActions extends StatelessWidget {
     if (book.accessInfo?.webReaderLink != null) {
       await launchUrl(Uri.parse(book.accessInfo!.webReaderLink!));
     } else {
-      Fluttertoast.showToast(msg: 'Book preview not allowed');
+      Fluttertoast.showToast(
+        msg: 'Book preview not allowed',
+        backgroundColor: AppColors.orangeColor,
+      );
     }
   }
 
   _priceOnClick() async {
     if (book.saleInfo?.saleability == 'FOR_SALE') {
       await launchUrl(Uri.parse(book.saleInfo!.buyLink!));
-    }
-    if (book.saleInfo?.saleability == 'FREE') {
+    } else if (book.saleInfo?.saleability == 'FREE') {
       if (book.accessInfo?.pdf?.acsTokenLink != null) {
         await launchUrl(
           Uri.parse(book.accessInfo!.pdf!.acsTokenLink!),
         );
-      } else if (book.accessInfo?.epub?.acsTokenLink != null) {
+      }
+      if (book.accessInfo?.epub?.acsTokenLink != null) {
         await launchUrl(
           Uri.parse(book.accessInfo!.epub!.acsTokenLink!),
         );
-      } else {
-        Fluttertoast.showToast(msg: 'Book download not avialable!');
       }
+    } else {
+      Fluttertoast.showToast(
+        msg: 'Book download not avialable!',
+        backgroundColor: AppColors.whiteColor,
+        textColor: AppColors.blackColor,
+      );
     }
   }
 
