@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_error_widget.dart';
-import '../../../../core/widgets/custom_shimmer.dart';
 import '../bloc/home_bloc.dart';
 import 'book_shimmer.dart';
 import 'newest_book_item.dart';
