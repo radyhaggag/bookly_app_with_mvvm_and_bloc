@@ -44,7 +44,8 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
   Future<List<BookModel>> fetchSimilarBooks(String category) async {
     try {
       final data = await apiService.get(
-        endpoint: 'volumes?q=Programming+intitle:$category&orderBy=relevance',
+        endpoint:
+            'volumes?q=Programming+intitle:$category&orderBy=relevance&filter=ebooks',
       );
       List<BookModel> books = [];
       books = List<BookModel>.from(
