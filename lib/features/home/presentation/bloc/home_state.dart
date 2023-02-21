@@ -36,3 +36,17 @@ class NewestBooksLoadingFailed extends HomeState {
 
   final String message;
 }
+
+class SimilarBooksLoading extends HomeState {}
+
+class SimilarBooksLoadingSuccess extends HomeState {
+  const SimilarBooksLoadingSuccess(this.books);
+
+  final List<BookModel> books;
+}
+
+class SimilarBooksLoadingFailed extends HomeState {
+  const SimilarBooksLoadingFailed(this.message);
+
+  final String message;
+}

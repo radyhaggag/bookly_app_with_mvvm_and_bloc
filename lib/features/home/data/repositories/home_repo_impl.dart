@@ -29,4 +29,18 @@ class HomeRepoImpl implements HomeRepo {
       return left(ErrorHandler.handle(e).failure);
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+    String category,
+  ) async {
+    try {
+      final books = await homeRemoteDatasource.fetchSimilarBooks(
+        category,
+      );
+      return right(books);
+    } catch (e) {
+      return left(ErrorHandler.handle(e).failure);
+    }
+  }
 }

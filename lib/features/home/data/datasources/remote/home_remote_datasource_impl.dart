@@ -39,4 +39,20 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
       rethrow;
     }
   }
+
+  @override
+  Future<List<BookModel>> fetchSimilarBooks(String category) async {
+    try {
+      final data = await apiService.get(
+        endpoint: 'volumes?q=Programming+intitle:$category&orderBy=relevance',
+      );
+      List<BookModel> books = [];
+      books = List<BookModel>.from(
+        data['items'].map((book) => BookModel.fromJson(book)),
+      );
+      return books;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

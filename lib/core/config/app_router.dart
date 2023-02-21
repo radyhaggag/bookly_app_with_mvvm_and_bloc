@@ -16,6 +16,8 @@ abstract class AppRouter {
   static const bookDetailsView = '/bookDetailsView';
   static const searchView = '/searchView';
 
+  static final homeBloc = sl<HomeBloc>();
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -25,7 +27,7 @@ abstract class AppRouter {
       GoRoute(
         path: homeView,
         builder: (context, state) => BlocProvider(
-          create: (context) => sl<HomeBloc>()
+          create: (context) => homeBloc
             ..add(LoadFeaturedBooks())
             ..add(LoadNewestBooks()),
           child: const HomeView(),
@@ -33,8 +35,14 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: bookDetailsView,
-        builder: (context, state) => BookDetailsView(
-          book: state.extra as BookModel,
+        builder: (context, state) => BlocProvider<HomeBloc>.value(
+          value: homeBloc
+            ..add(LoadSimilarBooks(
+              (state.extra as BookModel).volumeInfo.categories?.first ?? '',
+            )),
+          child: BookDetailsView(
+            book: state.extra as BookModel,
+          ),
         ),
       ),
       GoRoute(
