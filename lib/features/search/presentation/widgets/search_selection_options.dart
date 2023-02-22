@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/core/utils/extensions.dart';
+import '../../../../core/utils/extensions.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import 'filter_options_section.dart';

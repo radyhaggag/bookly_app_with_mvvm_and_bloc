@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:bookly_app/core/models/book_model.dart';
-import 'package:bookly_app/features/search/data/models/search_model.dart';
-import 'package:bookly_app/features/search/data/repositories/search_repo.dart';
+import '../../../../core/models/book_model.dart';
+import '../../data/models/search_model.dart';
+import '../../data/repositories/search_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 

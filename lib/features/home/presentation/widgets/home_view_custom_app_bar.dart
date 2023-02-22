@@ -1,8 +1,8 @@
-import 'package:bookly_app/core/config/app_router.dart';
+import '../../../../core/config/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:bookly_app/core/utils/app_assets.dart';
+import '../../../../core/utils/app_assets.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeViewCustomAppBar extends StatelessWidget {

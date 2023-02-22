@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:bookly_app/core/config/app_router.dart';
-import 'package:bookly_app/core/utils/app_assets.dart';
+import '../../../../core/config/app_router.dart';
+import '../../../../core/utils/app_assets.dart';
 
 import '../../../../core/utils/constants.dart';
 import 'sliding_text.dart';

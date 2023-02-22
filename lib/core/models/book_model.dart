@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../features/home/data/models/book_model/access_info.dart';
 import '../../features/home/data/models/book_model/sale_info.dart';

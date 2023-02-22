@@ -2,7 +2,7 @@ import '../../../../core/widgets/custom_error_widget.dart';
 import '../../../../core/widgets/custom_shimmer.dart';
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/core/utils/extensions.dart';
+import '../../../../core/utils/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/home_bloc.dart';

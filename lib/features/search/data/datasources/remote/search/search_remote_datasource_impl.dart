@@ -13,9 +13,8 @@ class SearchRemoteDatasourceImpl implements SearchRemoteDatasource {
     SearchModel searchModel,
   ) async {
     try {
-      String sortOption = _ValidateSortOption(searchModel.sortOption);
-      String filterOption = _ValidateFilterOption(searchModel.filterOption);
-      print(filterOption);
+      String sortOption = _validateSortOption(searchModel.sortOption);
+      String filterOption = _validateFilterOption(searchModel.filterOption);
       final data = await apiService.get(
         endpoint:
             'volumes?q=${searchModel.searchText}&orderBy=$sortOption&filter=$filterOption',
@@ -30,7 +29,7 @@ class SearchRemoteDatasourceImpl implements SearchRemoteDatasource {
     }
   }
 
-  String _ValidateSortOption(String? sortOption) {
+  String _validateSortOption(String? sortOption) {
     if (sortOption == null || sortOption.isEmpty) {
       return 'newest';
     } else {
@@ -38,7 +37,7 @@ class SearchRemoteDatasourceImpl implements SearchRemoteDatasource {
     }
   }
 
-  String _ValidateFilterOption(String? filterOption) {
+  String _validateFilterOption(String? filterOption) {
     if (filterOption == null || filterOption.isEmpty) {
       return 'ebooks';
     } else {
