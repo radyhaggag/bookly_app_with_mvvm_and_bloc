@@ -1,1 +1,3 @@
-enum SearchFilterOption { freeBooks, partial, full }
+enum SearchFilterOption { partial, full, freeEBooks, paidEBooks, ebooks }
+
+enum SearchSortingOption { relevance, newest }

@@ -10,12 +10,27 @@ extension MediaQueryExtension on BuildContext {
 extension SearchFilterStrings on SearchFilterOption {
   String getValue() {
     switch (this) {
-      case SearchFilterOption.freeBooks:
-        return 'Free e-books';
+      case SearchFilterOption.freeEBooks:
+        return 'free-ebooks';
+      case SearchFilterOption.paidEBooks:
+        return 'paid-ebooks';
       case SearchFilterOption.partial:
-        return 'Partial';
+        return 'partial';
       case SearchFilterOption.full:
-        return 'Full';
+        return 'full';
+      case SearchFilterOption.ebooks:
+        return 'ebooks';
+    }
+  }
+}
+
+extension SearchSortingStrings on SearchSortingOption {
+  String getValue() {
+    switch (this) {
+      case SearchSortingOption.relevance:
+        return 'relevance';
+      case SearchSortingOption.newest:
+        return 'newest';
     }
   }
 }
