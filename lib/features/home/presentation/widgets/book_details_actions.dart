@@ -33,7 +33,7 @@ class BookDetailsActions extends StatelessWidget {
           ),
           Expanded(
             child: CustomTextButton(
-              onPressed: _preivewOnClick,
+              onPressed: _previewOnClick,
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -49,7 +49,7 @@ class BookDetailsActions extends StatelessWidget {
     );
   }
 
-  _preivewOnClick() async {
+  _previewOnClick() async {
     if (book.accessInfo?.webReaderLink != null) {
       await launchUrl(Uri.parse(book.accessInfo!.webReaderLink!));
     } else {
