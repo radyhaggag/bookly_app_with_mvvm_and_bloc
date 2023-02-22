@@ -40,7 +40,7 @@ class FilterOptionsSection extends StatelessWidget {
             ...List.generate(
               SearchSortingOption.values.length,
               (index) => SortingOptionChip(
-                sortingOption: SearchSortingOption.values[index],
+                sortOption: SearchSortingOption.values[index],
               ),
             ),
           ],

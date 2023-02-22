@@ -6,7 +6,7 @@ import 'package:bookly_app/core/utils/extensions.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../bloc/search_bloc.dart';
-import '../../../../core/utils/params.dart';
+import '../../data/models/search_model.dart';
 
 class FilterOptionChip extends StatelessWidget {
   const FilterOptionChip({super.key, required this.filterOption});
@@ -24,14 +24,14 @@ class FilterOptionChip extends StatelessWidget {
           label: Text(filterOption.getValue()),
           selected: _checkFilterValueSelection(
             filterOption,
-            context.read<SearchBloc>().searchParams,
+            context.read<SearchBloc>().searchModel,
           ),
           selectedColor: AppColors.primaryColor,
           onSelected: (value) {
             context.read<SearchBloc>().add(
                   ChangeSearchFilterOption(
-                      context.read<SearchBloc>().searchParams.copyWith(
-                            searchFilterOption: filterOption,
+                      context.read<SearchBloc>().searchModel.copyWith(
+                            filterOption: filterOption.getValue(),
                           )),
                 );
           },
@@ -42,8 +42,8 @@ class FilterOptionChip extends StatelessWidget {
 
   _checkFilterValueSelection(
     SearchFilterOption filterOption,
-    SearchParams searchParams,
+    SearchModel searchParams,
   ) {
-    return searchParams.searchFilterOption == filterOption;
+    return searchParams.filterOption == filterOption.getValue();
   }
 }

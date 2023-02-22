@@ -6,12 +6,12 @@ import '../../../../core/models/book_model.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
-import '../../data/models/book_model/sale_info.dart';
-import 'book_rating.dart';
-import 'custom_book_image.dart';
+import '../../features/home/data/models/book_model/sale_info.dart';
+import '../../features/home/presentation/widgets/book_rating.dart';
+import '../../features/home/presentation/widgets/custom_book_image.dart';
 
-class NewestBookItem extends StatelessWidget {
-  const NewestBookItem({super.key, required this.book});
+class DetailedBookItem extends StatelessWidget {
+  const DetailedBookItem({super.key, required this.book});
 
   final BookModel book;
 

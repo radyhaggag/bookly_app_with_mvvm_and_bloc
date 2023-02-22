@@ -10,7 +10,7 @@ abstract class SearchEvent extends Equatable {
 class ChangeFilterSelectionVisibility extends SearchEvent {}
 
 class ChangeSearchFilterOption extends SearchEvent {
-  final SearchParams searchParams;
+  final SearchModel searchParams;
 
   const ChangeSearchFilterOption(this.searchParams);
 

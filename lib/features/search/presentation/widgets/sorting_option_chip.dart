@@ -6,12 +6,12 @@ import 'package:bookly_app/core/utils/extensions.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../bloc/search_bloc.dart';
-import '../../../../core/utils/params.dart';
+import '../../data/models/search_model.dart';
 
 class SortingOptionChip extends StatelessWidget {
-  const SortingOptionChip({super.key, required this.sortingOption});
+  const SortingOptionChip({super.key, required this.sortOption});
 
-  final SearchSortingOption sortingOption;
+  final SearchSortingOption sortOption;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +21,17 @@ class SortingOptionChip extends StatelessWidget {
       },
       builder: (context, state) {
         return ChoiceChip(
-          label: Text(sortingOption.getValue()),
+          label: Text(sortOption.getValue()),
           selected: _checkSortingValueSelection(
-            sortingOption,
-            context.read<SearchBloc>().searchParams,
+            sortOption,
+            context.read<SearchBloc>().searchModel,
           ),
           selectedColor: AppColors.primaryColor,
           onSelected: (value) {
             context.read<SearchBloc>().add(
                   ChangeSearchFilterOption(
-                      context.read<SearchBloc>().searchParams.copyWith(
-                            searchSortingOption: sortingOption,
+                      context.read<SearchBloc>().searchModel.copyWith(
+                            sortOption: sortOption.getValue(),
                           )),
                 );
           },
@@ -42,8 +42,8 @@ class SortingOptionChip extends StatelessWidget {
 
   _checkSortingValueSelection(
     SearchSortingOption sortingOption,
-    SearchParams searchParams,
+    SearchModel searchParams,
   ) {
-    return searchParams.searchSortingOption == sortingOption;
+    return searchParams.sortOption == sortingOption.getValue();
   }
 }

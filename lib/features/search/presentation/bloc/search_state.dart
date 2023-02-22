@@ -19,10 +19,24 @@ class FilterSelectionVisibilityChanged extends SearchState {
 }
 
 class SearchOptionsChanged extends SearchState {
-  final SearchParams searchParams;
+  final SearchModel searchParams;
 
   const SearchOptionsChanged(this.searchParams);
 
   @override
   List<Object> get props => [searchParams];
+}
+
+class SearchResultLoading extends SearchState {}
+
+class SearchResultLoadingSuccess extends SearchState {
+  final List<BookModel> books;
+
+  const SearchResultLoadingSuccess(this.books);
+}
+
+class SearchResultLoadingFailed extends SearchState {
+  final String message;
+
+  const SearchResultLoadingFailed(this.message);
 }

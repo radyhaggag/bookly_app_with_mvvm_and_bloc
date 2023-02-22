@@ -1,6 +1,8 @@
 import 'dart:async';
 
-import 'package:bookly_app/core/utils/params.dart';
+import 'package:bookly_app/core/models/book_model.dart';
+import 'package:bookly_app/features/search/data/models/search_model.dart';
+import 'package:bookly_app/features/search/data/repositories/search_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,12 +10,14 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc() : super(SearchInitial()) {
+  SearchBloc(this.searchRepo) : super(SearchInitial()) {
     on<ChangeFilterSelectionVisibility>(_changeFilterSelectionVisibility);
     on<ChangeSearchFilterOption>(_changeSearchFilterOption);
     on<ChangeSearchText>(_changeSearchText);
     on<LoadSearchResult>(_loadSearchResult);
   }
+
+  final SearchRepo searchRepo;
 
   bool _isFilterSelectionVisible = false;
 
@@ -25,7 +29,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     emit(FilterSelectionVisibilityChanged(_isFilterSelectionVisible));
   }
 
-  SearchParams searchParams = SearchParams(
+  SearchModel searchModel = SearchModel(
     searchText: '',
   );
 
@@ -33,19 +37,26 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     ChangeSearchFilterOption event,
     Emitter<SearchState> emit,
   ) {
-    searchParams = event.searchParams;
-    emit(SearchOptionsChanged(searchParams));
+    searchModel = event.searchParams;
+    emit(SearchOptionsChanged(searchModel));
   }
 
   void _changeSearchText(
     ChangeSearchText event,
     Emitter<SearchState> emit,
   ) {
-    searchParams = searchParams.copyWith(searchText: event.searchText);
+    searchModel = searchModel.copyWith(searchText: event.searchText);
   }
 
   FutureOr<void> _loadSearchResult(
     LoadSearchResult event,
     Emitter<SearchState> emit,
-  ) async {}
+  ) async {
+    emit(SearchResultLoading());
+    final res = await searchRepo.search(searchModel);
+    res.fold(
+      (failure) => emit(SearchResultLoadingFailed(failure.message)),
+      (books) => emit(SearchResultLoadingSuccess(books)),
+    );
+  }
 }

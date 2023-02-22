@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/book_shimmer.dart';
 import '../../../../core/widgets/custom_error_widget.dart';
+import '../../../../core/widgets/detailed_book_item.dart';
 import '../bloc/home_bloc.dart';
-import 'book_shimmer.dart';
-import 'newest_book_item.dart';
 
 class NewestItemsListView extends StatelessWidget {
   const NewestItemsListView({super.key});
@@ -28,7 +28,7 @@ class NewestItemsListView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
-              child: NewestBookItem(book: state.books[index]),
+              child: DetailedBookItem(book: state.books[index]),
             ),
             itemCount: state.books.length,
           );
