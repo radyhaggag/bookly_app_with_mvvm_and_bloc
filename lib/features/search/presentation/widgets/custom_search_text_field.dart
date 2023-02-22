@@ -15,12 +15,17 @@ class CustomSearchTextField extends StatelessWidget {
       onChanged: (value) {
         context.read<SearchBloc>().add(ChangeSearchText(value));
       },
+      onSubmitted: (value) {
+        context.read<SearchBloc>().add(LoadSearchResult());
+      },
       decoration: InputDecoration(
         hintText: AppStrings.searchAboutBookMessage,
         enabledBorder: _buildTextFieldBorder(),
         focusedBorder: _buildTextFieldBorder(),
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<SearchBloc>().add(LoadSearchResult());
+          },
           color: AppColors.whiteColor,
           icon: const Icon(FontAwesomeIcons.magnifyingGlass),
         ),

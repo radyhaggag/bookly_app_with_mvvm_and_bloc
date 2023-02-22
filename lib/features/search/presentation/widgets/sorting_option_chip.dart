@@ -20,30 +20,40 @@ class SortingOptionChip extends StatelessWidget {
         return current is SearchOptionsChanged;
       },
       builder: (context, state) {
+        var searchBloc = context.read<SearchBloc>();
         return ChoiceChip(
           label: Text(sortOption.getValue()),
           selected: _checkSortingValueSelection(
             sortOption,
-            context.read<SearchBloc>().searchModel,
+            searchBloc.searchModel,
           ),
           selectedColor: AppColors.primaryColor,
-          onSelected: (value) {
-            context.read<SearchBloc>().add(
-                  ChangeSearchFilterOption(
-                      context.read<SearchBloc>().searchModel.copyWith(
-                            sortOption: sortOption.getValue(),
-                          )),
-                );
-          },
+          onSelected: (value) => _onSortOptionSelected(searchBloc),
         );
       },
     );
   }
 
+  void _onSortOptionSelected(SearchBloc searchBloc) {
+    if (searchBloc.searchModel.sortOption == sortOption.getValue()) {
+      searchBloc.add(
+        ChangeSearchFilterOption(searchBloc.searchModel.copyWith(
+          sortOption: '',
+        )),
+      );
+    } else {
+      searchBloc.add(
+        ChangeSearchFilterOption(searchBloc.searchModel.copyWith(
+          sortOption: sortOption.getValue(),
+        )),
+      );
+    }
+  }
+
   _checkSortingValueSelection(
     SearchSortingOption sortingOption,
-    SearchModel searchParams,
+    SearchModel searchModel,
   ) {
-    return searchParams.sortOption == sortingOption.getValue();
+    return searchModel.sortOption == sortingOption.getValue();
   }
 }

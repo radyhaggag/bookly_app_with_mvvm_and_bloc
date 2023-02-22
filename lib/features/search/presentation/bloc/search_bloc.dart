@@ -37,7 +37,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     ChangeSearchFilterOption event,
     Emitter<SearchState> emit,
   ) {
-    searchModel = event.searchParams;
+    searchModel = event.searchModel;
     emit(SearchOptionsChanged(searchModel));
   }
 

@@ -10,12 +10,12 @@ abstract class SearchEvent extends Equatable {
 class ChangeFilterSelectionVisibility extends SearchEvent {}
 
 class ChangeSearchFilterOption extends SearchEvent {
-  final SearchModel searchParams;
+  final SearchModel searchModel;
 
-  const ChangeSearchFilterOption(this.searchParams);
+  const ChangeSearchFilterOption(this.searchModel);
 
   @override
-  List<Object> get props => [searchParams];
+  List<Object> get props => [searchModel];
 }
 
 class ChangeSearchText extends SearchEvent {

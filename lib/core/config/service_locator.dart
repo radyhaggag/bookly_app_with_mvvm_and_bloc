@@ -15,7 +15,7 @@ import '../../features/search/data/repositories/search_repo_impl.dart';
 import '../../features/search/presentation/bloc/search_bloc.dart';
 import '../api/api_service.dart';
 import '../api/dio_api_service.dart';
-import '../config/connectivity_checker.dart';
+import 'connectivity_checker.dart';
 
 final sl = GetIt.instance;
 
@@ -32,7 +32,7 @@ void _initCore() {
     () => sl<DioApiService>(),
   );
   sl.registerLazySingleton<BaseCheckInternetConnectivity>(
-    () => sl<CheckInternetConnectivity>(),
+    () => CheckInternetConnectivity(),
   );
 }
 
@@ -48,7 +48,7 @@ void _initHomeFeature() {
     () => HomeRepoImpl(
       homeRemoteDatasource: sl<HomeRemoteDatasource>(),
       homeLocalDatasource: sl<HomeLocalDatasource>(),
-      baseCheckInternetConnectivity: sl<CheckInternetConnectivity>(),
+      baseCheckInternetConnectivity: sl<BaseCheckInternetConnectivity>(),
     ),
   );
 

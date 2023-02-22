@@ -1,8 +1,5 @@
-import 'package:bookly_app/core/config/hive_manager.dart';
-import 'package:hive/hive.dart';
-
 import '../../../../../core/api/api_service.dart';
-
+import '../../../../../core/config/hive_manager.dart';
 import '../../../../../core/models/book_model.dart';
 import 'home_remote_datasource.dart';
 
@@ -21,8 +18,8 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
       books = List<BookModel>.from(
         data['items'].map((book) => BookModel.fromJson(book)),
       );
-      Hive.box(HiveBoxes.featuredBooks).clear();
-      Hive.box(HiveBoxes.featuredBooks).addAll(books);
+      AppHiveBoxes.featuredBooks.clear();
+      AppHiveBoxes.featuredBooks.addAll(books);
       return books;
     } catch (e) {
       rethrow;
@@ -39,8 +36,8 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
       books = List<BookModel>.from(
         data['items'].map((book) => BookModel.fromJson(book)),
       );
-      Hive.box(HiveBoxes.newestBooks).clear();
-      Hive.box(HiveBoxes.newestBooks).addAll(books);
+      AppHiveBoxes.newestBooks.clear();
+      AppHiveBoxes.newestBooks.addAll(books);
 
       return books;
     } catch (e) {

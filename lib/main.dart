@@ -6,12 +6,14 @@ import 'bloc_observer.dart';
 import 'core/config/app_router.dart';
 import 'core/config/hive_manager.dart';
 import 'core/utils/app_colors.dart';
-import 'core/utils/service_locator.dart';
+import 'core/config/service_locator.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+
   initServiceLocator();
-  initHive();
+  await initHive();
   runApp(const BooklyApp());
 }
 

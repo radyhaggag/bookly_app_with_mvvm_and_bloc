@@ -20,30 +20,41 @@ class FilterOptionChip extends StatelessWidget {
         return current is SearchOptionsChanged;
       },
       builder: (context, state) {
+        var searchBloc = context.read<SearchBloc>();
         return ChoiceChip(
           label: Text(filterOption.getValue()),
           selected: _checkFilterValueSelection(
             filterOption,
-            context.read<SearchBloc>().searchModel,
+            searchBloc.searchModel,
           ),
           selectedColor: AppColors.primaryColor,
-          onSelected: (value) {
-            context.read<SearchBloc>().add(
-                  ChangeSearchFilterOption(
-                      context.read<SearchBloc>().searchModel.copyWith(
-                            filterOption: filterOption.getValue(),
-                          )),
-                );
-          },
+          onSelected: (value) => _onFilterOptionSelected(searchBloc),
         );
       },
     );
   }
 
+  void _onFilterOptionSelected(SearchBloc searchBloc) {
+    if (filterOption.getValue() == searchBloc.searchModel.filterOption) {
+      searchBloc.add(
+        ChangeSearchFilterOption(searchBloc.searchModel.copyWith(
+          filterOption: '',
+        )),
+      );
+    } else {
+      searchBloc.add(
+        ChangeSearchFilterOption(searchBloc.searchModel.copyWith(
+          filterOption: filterOption.getValue(),
+        )),
+      );
+    }
+    print(searchBloc.searchModel.filterOption);
+  }
+
   _checkFilterValueSelection(
     SearchFilterOption filterOption,
-    SearchModel searchParams,
+    SearchModel searchModel,
   ) {
-    return searchParams.filterOption == filterOption.getValue();
+    return searchModel.filterOption == filterOption.getValue();
   }
 }

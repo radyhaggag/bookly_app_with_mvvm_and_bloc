@@ -14,7 +14,6 @@ class SearchResultSection extends StatelessWidget {
         horizontal: kMainHorizontalPadding,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Text(
             'Search Result',

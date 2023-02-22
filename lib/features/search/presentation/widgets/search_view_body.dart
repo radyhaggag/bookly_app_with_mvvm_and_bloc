@@ -13,6 +13,7 @@ class SearchViewBody extends StatelessWidget {
         vertical: 15,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           SearchTextFieldSection(),
           SizedBox(height: 15),

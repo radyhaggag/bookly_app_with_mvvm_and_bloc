@@ -11,6 +11,7 @@ class FilterOptionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,12 +29,12 @@ class FilterOptionsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 50),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'OrderedBy',
+              'Order By',
               style: Styles.textStyle18,
             ),
             const SizedBox(height: 10),

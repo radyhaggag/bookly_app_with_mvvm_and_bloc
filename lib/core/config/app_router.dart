@@ -9,7 +9,7 @@ import '../../features/search/presentation/bloc/search_bloc.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../models/book_model.dart';
-import '../utils/service_locator.dart';
+import 'service_locator.dart';
 
 abstract class AppRouter {
   static const splashView = '/';

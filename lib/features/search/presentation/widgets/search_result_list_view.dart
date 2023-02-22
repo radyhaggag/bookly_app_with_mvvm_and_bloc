@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/widgets/book_shimmer.dart';
 import '../../../../core/widgets/custom_error_widget.dart';
-import '../../../home/presentation/widgets/featured_book_item.dart';
+import '../../../../core/widgets/detailed_book_item.dart';
 import '../bloc/search_bloc.dart';
 
 class SearchResultListView extends StatelessWidget {
@@ -29,29 +29,27 @@ class SearchResultListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: FeaturedBookItem(
-                  isClickable: true,
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: DetailedBookItem(
                   book: state.books[index],
                 ),
               ),
               itemCount: state.books.length,
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
             );
           } else if (state is SearchResultLoadingFailed) {
             return CustomErrorWidget(message: state.message);
-          } else {
+          } else if (state is SearchResultLoading) {
             return ListView.builder(
               itemBuilder: (context, index) => const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                child: AspectRatio(
-                  aspectRatio: 2.6 / 4,
-                  child: BookShimmer(),
-                ),
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: BookShimmer(),
               ),
               itemCount: 10,
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
             );
+          } else {
+            return const SizedBox();
           }
         },
       ),
