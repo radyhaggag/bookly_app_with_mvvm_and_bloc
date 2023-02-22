@@ -2,7 +2,7 @@
     package="com.example.bookly_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="bookly_app"
+        android:label="Bookly"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
