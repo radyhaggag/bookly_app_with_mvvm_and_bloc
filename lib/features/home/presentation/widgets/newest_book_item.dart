@@ -1,14 +1,14 @@
-import 'package:bookly_app/features/home/presentation/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../data/models/book_model/book_model.dart';
 import '../../../../core/config/app_router.dart';
+import '../../../../core/models/book_model.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
 import '../../data/models/book_model/sale_info.dart';
 import 'book_rating.dart';
+import 'custom_book_image.dart';
 
 class NewestBookItem extends StatelessWidget {
   const NewestBookItem({super.key, required this.book});

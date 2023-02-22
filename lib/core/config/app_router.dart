@@ -1,4 +1,3 @@
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,6 +7,7 @@ import '../../features/home/presentation/views/home_view.dart';
 import '../../features/search/presentation/bloc/search_bloc.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
+import '../models/book_model.dart';
 import '../utils/service_locator.dart';
 
 abstract class AppRouter {

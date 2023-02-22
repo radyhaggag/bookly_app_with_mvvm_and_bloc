@@ -1,9 +1,9 @@
-import '../../data/models/book_model/book_model.dart';
-import 'custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/config/app_router.dart';
+import '../../../../core/models/book_model.dart';
+import 'custom_book_image.dart';
 
 class FeaturedBookItem extends StatelessWidget {
   const FeaturedBookItem({

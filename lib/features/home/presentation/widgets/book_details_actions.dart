@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/models/book_model.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_text_button.dart';
-import '../../data/models/book_model/book_model.dart';
 import '../../data/models/book_model/sale_info.dart';
 
 class BookDetailsActions extends StatelessWidget {
@@ -63,20 +63,14 @@ class BookDetailsActions extends StatelessWidget {
   _priceOnClick() async {
     if (book.saleInfo?.saleability == 'FOR_SALE') {
       await launchUrl(Uri.parse(book.saleInfo!.buyLink!));
-    } else if (book.saleInfo?.saleability == 'FREE') {
-      if (book.accessInfo?.pdf?.acsTokenLink != null) {
-        await launchUrl(
-          Uri.parse(book.accessInfo!.pdf!.acsTokenLink!),
-        );
-      }
-      if (book.accessInfo?.epub?.acsTokenLink != null) {
-        await launchUrl(
-          Uri.parse(book.accessInfo!.epub!.acsTokenLink!),
-        );
-      }
+    } else if (book.saleInfo?.saleability == 'FREE' &&
+        book.accessInfo?.pdf?.acsTokenLink != null) {
+      await launchUrl(
+        Uri.parse(book.accessInfo!.pdf!.acsTokenLink!),
+      );
     } else {
       Fluttertoast.showToast(
-        msg: 'Book download not avialable!',
+        msg: 'Book download not available!',
         backgroundColor: AppColors.whiteColor,
         textColor: AppColors.blackColor,
       );

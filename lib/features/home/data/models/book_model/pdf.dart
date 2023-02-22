@@ -1,10 +1,16 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
-class Pdf extends Equatable {
+part 'pdf.g.dart';
+
+@HiveType(typeId: 5)
+class Pdf extends HiveObject with EquatableMixin {
+  @HiveField(0)
   final bool? isAvailable;
+  @HiveField(1)
   final String? acsTokenLink;
 
-  const Pdf({this.isAvailable, this.acsTokenLink});
+  Pdf({this.isAvailable, this.acsTokenLink});
 
   factory Pdf.fromJson(Map<String, dynamic> json) => Pdf(
         isAvailable: json['isAvailable'] as bool?,

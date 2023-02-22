@@ -1,50 +1,54 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
 import 'image_links.dart';
-import 'industry_identifier.dart';
-import 'panelization_summary.dart';
-import 'reading_modes.dart';
 
-class VolumeInfo extends Equatable {
+part 'volume_info.g.dart';
+
+@HiveType(typeId: 1)
+class VolumeInfo extends HiveObject with EquatableMixin {
+  @HiveField(0)
   final String title;
+  @HiveField(1)
   final List<String>? authors;
+  @HiveField(2)
   final String? publisher;
+  @HiveField(3)
   final String? publishedDate;
+  @HiveField(4)
   final String? description;
-  final List<IndustryIdentifier>? industryIdentifiers;
-  final ReadingModes? readingModes;
+  @HiveField(5)
   final int? pageCount;
+  @HiveField(6)
   final String? printType;
+  @HiveField(7)
   final List<String>? categories;
+  @HiveField(8)
   final num? averageRating;
+  @HiveField(9)
   final int? ratingsCount;
-  final String? maturityRating;
-  final bool? allowAnonLogging;
-  final String? contentVersion;
-  final PanelizationSummary? panelizationSummary;
+  @HiveField(10)
   final ImageLinks? imageLinks;
+  @HiveField(11)
   final String? language;
+  @HiveField(12)
   final String? previewLink;
+  @HiveField(13)
   final String? infoLink;
+  @HiveField(14)
   final String? canonicalVolumeLink;
 
-  const VolumeInfo({
+  VolumeInfo({
     required this.title,
     required this.authors,
     this.publisher,
     this.publishedDate,
     this.description,
-    this.industryIdentifiers,
-    this.readingModes,
     this.pageCount,
     this.printType,
     this.categories,
     this.averageRating,
     this.ratingsCount,
-    this.maturityRating,
-    this.allowAnonLogging,
-    this.contentVersion,
-    this.panelizationSummary,
     this.imageLinks,
     this.language,
     this.previewLink,
@@ -58,25 +62,11 @@ class VolumeInfo extends Equatable {
         publisher: json['publisher'] as String?,
         publishedDate: json['publishedDate'] as String?,
         description: json['description'] as String?,
-        industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
-            ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        readingModes: json['readingModes'] == null
-            ? null
-            : ReadingModes.fromJson(
-                json['readingModes'] as Map<String, dynamic>),
         pageCount: json['pageCount'] as int?,
         printType: json['printType'] as String?,
         categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
         averageRating: json['averageRating'] as num?,
         ratingsCount: json['ratingsCount'] as int?,
-        maturityRating: json['maturityRating'] as String?,
-        allowAnonLogging: json['allowAnonLogging'] as bool?,
-        contentVersion: json['contentVersion'] as String?,
-        panelizationSummary: json['panelizationSummary'] == null
-            ? null
-            : PanelizationSummary.fromJson(
-                json['panelizationSummary'] as Map<String, dynamic>),
         imageLinks: json['imageLinks'] == null
             ? null
             : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
@@ -92,19 +82,11 @@ class VolumeInfo extends Equatable {
         'publisher': publisher,
         'publishedDate': publishedDate,
         'description': description,
-        'industryIdentifiers':
-            industryIdentifiers?.map((e) => e.toJson()).toList(),
-        'readingModes': readingModes?.toJson(),
         'pageCount': pageCount,
         'printType': printType,
         'categories': categories,
         'averageRating': averageRating,
         'ratingsCount': ratingsCount,
-        'maturityRating': maturityRating,
-        'allowAnonLogging': allowAnonLogging,
-        'contentVersion': contentVersion,
-        'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks?.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
@@ -119,17 +101,11 @@ class VolumeInfo extends Equatable {
       publisher,
       publishedDate,
       description,
-      industryIdentifiers,
-      readingModes,
       pageCount,
       printType,
       categories,
       averageRating,
       ratingsCount,
-      maturityRating,
-      allowAnonLogging,
-      contentVersion,
-      panelizationSummary,
       imageLinks,
       language,
       previewLink,

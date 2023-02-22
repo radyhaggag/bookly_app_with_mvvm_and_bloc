@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/models/book_model.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/extensions.dart';
 import '../../../../core/utils/styles.dart';
-import '../../data/models/book_model/book_model.dart';
 import 'book_details_actions.dart';
 import 'book_rating.dart';
 import 'featured_book_item.dart';

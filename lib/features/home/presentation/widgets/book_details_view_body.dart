@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/models/book_model.dart';
 import '../../../../core/utils/constants.dart';
-import '../../data/models/book_model/book_model.dart';
 import 'book_details_custom_app_bar.dart';
 import 'book_details_section.dart';
 import 'book_details_similar_section.dart';

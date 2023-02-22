@@ -1,10 +1,16 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
-class ListPrice extends Equatable {
+part 'list_price.g.dart';
+
+@HiveType(typeId: 6)
+class ListPrice extends HiveObject with EquatableMixin {
+  @HiveField(0)
   final double? amount;
+  @HiveField(1)
   final String? currencyCode;
 
-  const ListPrice({this.amount, this.currencyCode});
+  ListPrice({this.amount, this.currencyCode});
 
   factory ListPrice.fromJson(Map<String, dynamic> json) => ListPrice(
         amount: (json['amount'] as num?)?.toDouble(),

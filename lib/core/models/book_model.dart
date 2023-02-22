@@ -1,35 +1,39 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
-import 'access_info.dart';
-import 'sale_info.dart';
-import 'search_info.dart';
-import 'volume_info.dart';
+import '../../features/home/data/models/book_model/access_info.dart';
+import '../../features/home/data/models/book_model/sale_info.dart';
+import '../../features/home/data/models/book_model/volume_info.dart';
 
-class BookModel extends Equatable {
+part 'book_model.g.dart';
+
+@HiveType(typeId: 0)
+class BookModel extends HiveObject with EquatableMixin {
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String? kind;
-  final String? etag;
+  @HiveField(2)
   final String? selfLink;
+  @HiveField(3)
   final VolumeInfo volumeInfo;
+  @HiveField(4)
   final SaleInfo? saleInfo;
+  @HiveField(5)
   final AccessInfo? accessInfo;
-  final SearchInfo? searchInfo;
 
-  const BookModel({
+  BookModel({
     required this.id,
     this.kind,
-    this.etag,
     this.selfLink,
     required this.volumeInfo,
     this.saleInfo,
     this.accessInfo,
-    this.searchInfo,
   });
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
         id: json['id'] as String,
         kind: json['kind'] as String?,
-        etag: json['etag'] as String?,
         selfLink: json['selfLink'] as String?,
         volumeInfo:
             VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
@@ -39,20 +43,15 @@ class BookModel extends Equatable {
         accessInfo: json['accessInfo'] == null
             ? null
             : AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
-        searchInfo: json['searchInfo'] == null
-            ? null
-            : SearchInfo.fromJson(json['searchInfo'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
         'kind': kind,
         'id': id,
-        'etag': etag,
         'selfLink': selfLink,
         'volumeInfo': volumeInfo.toJson(),
         'saleInfo': saleInfo?.toJson(),
         'accessInfo': accessInfo?.toJson(),
-        'searchInfo': searchInfo?.toJson(),
       };
 
   @override
@@ -60,12 +59,10 @@ class BookModel extends Equatable {
     return [
       kind,
       id,
-      etag,
       selfLink,
       volumeInfo,
       saleInfo,
       accessInfo,
-      searchInfo,
     ];
   }
 }

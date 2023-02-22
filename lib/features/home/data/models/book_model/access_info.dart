@@ -1,27 +1,37 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
-import 'epub.dart';
 import 'pdf.dart';
 
-class AccessInfo extends Equatable {
+part 'access_info.g.dart';
+
+@HiveType(typeId: 3)
+class AccessInfo extends HiveObject with EquatableMixin {
+  @HiveField(0)
   final String? country;
+  @HiveField(1)
   final String? viewAbility;
+  @HiveField(2)
   final bool? embeddable;
+  @HiveField(3)
   final bool? publicDomain;
+  @HiveField(4)
   final String? textToSpeechPermission;
-  final Epub? epub;
+  @HiveField(5)
   final Pdf? pdf;
+  @HiveField(6)
   final String? webReaderLink;
+  @HiveField(7)
   final String? accessViewStatus;
+  @HiveField(8)
   final bool? quoteSharingAllowed;
 
-  const AccessInfo({
+  AccessInfo({
     this.country,
     this.viewAbility,
     this.embeddable,
     this.publicDomain,
     this.textToSpeechPermission,
-    this.epub,
     this.pdf,
     this.webReaderLink,
     this.accessViewStatus,
@@ -34,9 +44,6 @@ class AccessInfo extends Equatable {
         embeddable: json['embeddable'] as bool?,
         publicDomain: json['publicDomain'] as bool?,
         textToSpeechPermission: json['textToSpeechPermission'] as String?,
-        epub: json['epub'] == null
-            ? null
-            : Epub.fromJson(json['epub'] as Map<String, dynamic>),
         pdf: json['pdf'] == null
             ? null
             : Pdf.fromJson(json['pdf'] as Map<String, dynamic>),
@@ -51,7 +58,6 @@ class AccessInfo extends Equatable {
         'embeddable': embeddable,
         'publicDomain': publicDomain,
         'textToSpeechPermission': textToSpeechPermission,
-        'epub': epub?.toJson(),
         'pdf': pdf?.toJson(),
         'webReaderLink': webReaderLink,
         'accessViewStatus': accessViewStatus,
@@ -66,7 +72,6 @@ class AccessInfo extends Equatable {
       embeddable,
       publicDomain,
       textToSpeechPermission,
-      epub,
       pdf,
       webReaderLink,
       accessViewStatus,
