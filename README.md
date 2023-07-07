@@ -2,7 +2,12 @@
 Bookly app for Exploring and preview books with Clean arch and bloc pattern.
 
 
-## [Watch video preview for project on Linkedin](https://www.linkedin.com/posts/radyhaggag_flutter-activity-7034322031076618240-Kh7L?utm_source=share&utm_medium=member_desktop)
+### [Watch video preview for project on Linkedin](https://www.linkedin.com/posts/radyhaggag_flutter-activity-7034322031076618240-Kh7L?utm_source=share&utm_medium=member_desktop)
+### [Watch video preview for project on Youtube](https://youtu.be/lzlRjIr4d3o)
+
+## App Mockup
+
+![bookly-min](https://github.com/radyhaggag/bookly_app_with_mvvm_and_bloc/assets/74488175/3cc7bb35-fe4f-40e0-bd14-ea37d0e66a42)
 
 
 ## Features:
